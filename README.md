@@ -19,3 +19,48 @@ import cnn  # 自己建立的cnn类,用来实例化。
 我们使用csv的包来提取储存于csv格式文件中的数据。  
 使用numpy来做数据的初步处理。  
 使用pytorch作为构建cnn的工具包。  
+## 设置超参数
+在机器学习的上下文中，超参数是在开始学习过程之前设置值的参数。 相反，其他参数的值通过训练得出。  
+```
+# 定义超参数
+input_size = 28  # 图像的总尺寸28*28
+num_classes = 10  # 标签的种类数
+num_epochs = 3  # 训练的总循环周期
+batch_size = 64  # 一个撮（批次）的大小，64张图片
+```
+我们知道这次的数据集的手写数字图片数据尺寸是28*28*1的。  
+0到9共计10个数字，因此我们需要10个分类标签。
+我们设定设定三个epoch，这意味着我们将会把训练集循环训练三次。  
+我们设定一个batch训练64张图片，这样可以防止同时训练过多数据导致内存不够。
+## 预处理数据
+```
+def read_train_data(filename):
+    data = []
+    csv_reader = csv.reader(open(filename))
+    next(csv_reader)
+    for row in csv_reader:
+        label = int(row[0])
+        pic_in_row = [float(x) / 255 for x in row[1:]]
+        pic = np.array(pic_in_row).reshape(1, 28, 28)
+        pic = torch.from_numpy(pic).to(torch.float32)
+        temp = (pic, label)
+        data.append(temp)
+    return data
+```
+```
+ dataset = read_train_data('train.csv')
+    train_loader = torch.utils.data.DataLoader(dataset=dataset[0:33600],
+                                               batch_size=batch_size,
+                                               shuffle=True)
+
+    test_loader = torch.utils.data.DataLoader(dataset=dataset[33600:],
+                                              batch_size=batch_size,
+                                              shuffle=True)
+```
+
+
+
+
+
+
+

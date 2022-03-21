@@ -1,2 +1,11 @@
 # handwritten_numbers_classifying
-This is a CNN project that try to classify handwritten numbers
+## 任务目标
+设计一个算法实现对手写数字的识别。
+## 任务流程
+- 包的导入
+- 设置超参数
+- 预处理数据
+- 训练神经网络模型
+- 测试神经网络模型
+## 包的导入
+

@@ -59,7 +59,47 @@ def read_train_data(filename):
                                               shuffle=True)
 ```
 读取数据集后使用DataLoader方法进行封装数据，利用多进程来加速batch data的处理，使用yield来使用有限的内存。DataLoader是一个高效，简洁，直观的网络输入数据结构，便于使用和扩展。80%的数据用来作为训练集，20%的数据用来作为测试集。
+## 训练神经网络模型
+```
+class CNN(nn.Module):
+    def __init__(self):
+        super(CNN, self).__init__()
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(
+                in_channels=1,
+                out_channels=16,
+                kernel_size=5,
+                stride=1,
+                padding=2
+            ),
+            nn.ReLU(),
+            nn.BatchNorm2d(16),
+            nn.Dropout(p=0.5),
+            nn.MaxPool2d(kernel_size=2)
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(
+                in_channels=16,
+                out_channels=32,
+                kernel_size=5,
+                stride=1,
+                padding=2
+            ),
+            nn.ReLU(),
+            nn.BatchNorm2d(32),
+            nn.Dropout(p=0.5),
+            nn.MaxPool2d(kernel_size=2)
+        )
+        self.out = nn.Linear(32 * 7 * 7, 10)
+        self.dropout = nn.Dropout(p=0.5)
 
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.conv2(x)
+        x = x.view(x.size(0), -1)
+        output = self.out(x)
+        return output
+```
 
 
 

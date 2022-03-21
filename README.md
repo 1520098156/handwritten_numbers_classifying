@@ -176,7 +176,7 @@ for epoch in range(num_epochs):
 结果如下：  
 ![image](https://user-images.githubusercontent.com/52622948/159299480-009a1f22-dfc3-4e42-8405-0aed4adb0c8c.png)
 ## 总结
-从结果来开，测试集的准确率得到了95以上。成功完成了对于手写数字数据集的卷积神经网络分类识别。
+从结果来开，测试集的准确率得到了95\%以上。成功完成了对于手写数字数据集的卷积神经网络分类识别。
 
 
 

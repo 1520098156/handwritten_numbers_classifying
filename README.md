@@ -1,7 +1,7 @@
 # handwritten_numbers_classifying
 ## 任务目标
 设计一个CNN算法实现对手写数字的识别。  
-![image](https://user-images.githubusercontent.com/52622948/159292437-a1a67759-fd54-4d2c-865f-d25aee0d55a0.png)
+![image](https://user-images.githubusercontent.com/52622948/159292437-a1a67759-fd54-4d2c-865f-d25aee0d55a0.png)  
 ## 任务流程
 - 包的导入
 - 设置超参数
@@ -104,7 +104,7 @@ class CNN(nn.Module):
 class CNN读入nn.Module参数。nn.Module 初始化了一系列重要的成员变量。这些变量初始化了在模块 forward、 backward 和权重加载等时候会被调用的的 hooks，也定义了 parameters 和 buffers。\_\_init\_\_函数继承父类。初始化两层卷积层。  
 第一层和第二层卷积层先进行卷积操作，使用5\*5的感受野，移动步长是1，第一层使用16个卷积层，产生16个channel，而第二层使用32个卷积层，产生32个channel。我们希望使用padding为'VALID',根据公式算出padding为2层。接着让产生的数据通过激活函数（ReLU）,再进行归一化处理和dropout处理防止训练模型过拟合，最后在经过一次最大值池化层，减少最后连接层的中的参数数量。  
 设置全连接层的size为(32*7*7, 10)。
-![image](https://user-images.githubusercontent.com/52622948/159292744-1dadb972-12e4-407f-a9c7-e9090ebda5a2.png)
+![image](https://user-images.githubusercontent.com/52622948/159292744-1dadb972-12e4-407f-a9c7-e9090ebda5a2.png)  
 前馈步骤经过两个卷积层再经过一个全连接层后得到输出。
 ## 训练卷积神经网络模型
 ```

@@ -58,7 +58,8 @@ def read_train_data(filename):
                                               batch_size=batch_size,
                                               shuffle=True)
 ```
-读取数据集后使用DataLoader方法
+读取数据集后使用DataLoader方法进行封装数据，利用多进程来加速batch data的处理，使用yield来使用有限的内存。DataLoader是一个高效，简洁，直观的网络输入数据结构，便于使用和扩展。80%的数据用来作为训练集，20%的数据用来作为测试集。
+
 
 
 

@@ -31,7 +31,6 @@ class CNN(nn.Module):
             nn.MaxPool2d(kernel_size=2)
         )
         self.out = nn.Linear(32 * 7 * 7, 10)
-        self.dropout = nn.Dropout(p=0.5)
 
     def forward(self, x):
         x = self.conv1(x)

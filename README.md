@@ -28,7 +28,7 @@ num_classes = 10  # 标签的种类数
 num_epochs = 3  # 训练的总循环周期
 batch_size = 64  # 一个撮（批次）的大小，64张图片
 ```
-我们知道这次的数据集的手写数字图片数据尺寸是28*28*1的。  
+我们知道这次的数据集的手写数字图片数据尺寸是28\*28\*1的。  
 0到9共计10个数字，因此我们需要10个分类标签。
 我们设定设定三个epoch，这意味着我们将会把训练集循环训练三次。  
 我们设定一个batch训练64张图片，这样可以防止同时训练过多数据导致内存不够。
@@ -47,6 +47,7 @@ def read_train_data(filename):
         data.append(temp)
     return data
 ```
+这个方法使用csv的包读取数据，并将条状的（1\*784）reshape成1\*28\*28的tensor形式，将其和标签合并成一个元组temp放入名为data的list。最后返回预处理好的数据集。
 ```
  dataset = read_train_data('train.csv')
     train_loader = torch.utils.data.DataLoader(dataset=dataset[0:33600],
@@ -57,7 +58,7 @@ def read_train_data(filename):
                                               batch_size=batch_size,
                                               shuffle=True)
 ```
-
+读取数据集后使用DataLoader方法
 
 
 

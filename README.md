@@ -1,6 +1,6 @@
 # handwritten_numbers_classifying
 ## 任务目标
-设计一个CNN算法实现对手写数字的识别。
+设计一个CNN算法实现对手写数字的识别。  
 ![image](https://user-images.githubusercontent.com/52622948/159292437-a1a67759-fd54-4d2c-865f-d25aee0d55a0.png)
 ## 任务流程
 - 包的导入

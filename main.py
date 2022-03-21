@@ -32,23 +32,6 @@ def read_train_data(filename):
     return data
 
 
-def read_test_data(filename1, filename2):
-    data = []
-    csv_reader = csv.reader(open(filename1))
-    next(csv_reader)
-    csv_reader2 = csv.reader(open(filename2))
-    next(csv_reader2)
-    for row1, row2 in zip(csv_reader, csv_reader2):
-        pic_in_row = [float(x) / 255 for x in row1]
-        pic = np.array(pic_in_row).reshape(1, 28, 28)
-        pic = torch.from_numpy(pic).to(torch.float32)
-        label = int(row2[1])
-        temp = (pic, label)
-        data.append(temp)
-
-    return data
-
-
 if __name__ == '__main__':
     dataset = read_train_data('train.csv')
     train_loader = torch.utils.data.DataLoader(dataset=dataset[0:33600],

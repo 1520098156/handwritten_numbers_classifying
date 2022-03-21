@@ -139,38 +139,38 @@ def accuracy(predictions, labels):
     return rights, len(labels)
 ```
 ```
-    right_rate = []
-    right_num = 0
+right_rate = []
+right_num = 0
 
-    for epoch in range(num_epochs):
-        print('epoch=', epoch)
-        # 当前epoch的结果保存下来
-        train_rights = []
+for epoch in range(num_epochs):
+    print('epoch=', epoch)
+    # 当前epoch的结果保存下来
+    train_rights = []
 
-        for batch_index, (data, target) in enumerate(train_loader):
-            right = accuracy(output, target)
-            train_rights.append(right)
+    for batch_index, (data, target) in enumerate(train_loader):
+        right = accuracy(output, target)
+        train_rights.append(right)
 
-            if batch_index % 100 == 0:
+        if batch_index % 100 == 0:
 
-                net.eval()
-                val_rights = []
+            net.eval()
+            val_rights = []
 
-                for (data, target) in test_loader:
-                    output = net(data)
-                    right = accuracy(output, target)
-                    val_rights.append(right)
+            for (data, target) in test_loader:
+                output = net(data)
+                right = accuracy(output, target)
+                val_rights.append(right)
 
-                # 准确率计算
-                train_r = (sum([tup[0] for tup in train_rights]), sum([tup[1] for tup in train_rights]))
-                val_r = (sum([tup[0] for tup in val_rights]), sum([tup[1] for tup in val_rights]))
+            # 准确率计算
+            train_r = (sum([tup[0] for tup in train_rights]), sum([tup[1] for tup in train_rights]))
+            val_r = (sum([tup[0] for tup in val_rights]), sum([tup[1] for tup in val_rights]))
 
-                print('当前epoch: {} [{}/{} ({:.0f}%)]\t损失: {:.6f}\t训练集准确率: {:.2f}%\t测试集正确率: {:.2f}%'.format(
-                    epoch, batch_index * batch_size, len(train_loader.dataset),
-                           100. * batch_index / len(train_loader),
-                    loss.data,
-                           100. * train_r[0].numpy() / train_r[1],
-                           100. * val_r[0].numpy() / val_r[1]))
+            print('当前epoch: {} [{}/{} ({:.0f}%)]\t损失: {:.6f}\t训练集准确率: {:.2f}%\t测试集正确率: {:.2f}%'.format(
+                epoch, batch_index * batch_size, len(train_loader.dataset),
+                       100. * batch_index / len(train_loader),
+                loss.data,
+                       100. * train_r[0].numpy() / train_r[1],
+                       100. * val_r[0].numpy() / val_r[1]))
 ```
 每100个batch进行一次准确率的计算。  
 结果如下：  

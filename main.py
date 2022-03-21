@@ -3,10 +3,9 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import cnn  # 自己建立的cnn
 
 # 定义超参数
-import cnn
-
 input_size = 28  # 图像的总尺寸28*28
 num_classes = 10  # 标签的种类数
 num_epochs = 3  # 训练的总循环周期
@@ -76,7 +75,6 @@ if __name__ == '__main__':
         train_rights = []
 
         for batch_index, (data, target) in enumerate(train_loader):
-            # print('batch=', batch_index)
             net.train()
             output = net(data)
             loss = criterion(output, target)
